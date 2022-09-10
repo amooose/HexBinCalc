@@ -1,28 +1,6 @@
 String hbresult[3];
 
-
-int nth_digit(int64_t value, int digit)
-{
-    return (value / power(10, digit)) % 10;
-}
-/*String i64Str2(int64_t value){
-  String test = "";
-  bool neg = false;
-  int prev = 0; int last = -1;
-  for(int i = 0; i<19; i++){
-    int dig = nth_digit(value,i);
-    if(dig<0){neg=true;dig*=-1;}
-    test=dig+test;
-    if(dig == 0 && prev!=0){
-      last = i;
-    }
-    prev = dig;
-  }
-  if(prev != 0){ last = 19;}
-  test=test.substring(19-last,19);
-  return neg? "-"+test : test;
-}*/
-
+//No Stroll on arduino, quickest way I could think of int64->str
 String i64Str(int64_t n)
 {
     int64_t tn = n;
@@ -91,14 +69,13 @@ String hexStrToDec(String hexString) {
         decValue = (decValue << 4) + nextInt;
     }
   }
-  char buff[20];
   return i64Str(decValue);
 }
+
 //Binary String to decimal
 String binStrToDec(String s) {
 	char* p;
 	int64_t n = atoll(s.c_str(), 2);
-	char buff[20];
 	return i64Str(n);
 }
 
